@@ -4,7 +4,7 @@
     {
         public int NumberCount { get; private set; }
         public int Sum { get; private set; }
-        public float Mean => (float)Sum / NumberCount;
+        public int Mean => Sum / NumberCount;
 
         public void AddNumber(int number)
         {
