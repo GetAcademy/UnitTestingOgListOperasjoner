@@ -1,18 +1,18 @@
 ﻿namespace UnitTestingOgListOperasjoner.Islands
 {
-    internal class Island
+    public class Island
     {
-        private int _rank;
-        private string _name;
-        private int _area;
-        private string[] _countries;
+        public int Rank { get; }
+        public string Name { get; }
+        public int Area { get; }
+        public string[] Countries { get; }
 
         public Island(int rank, string name, int area, string countries)
         {
-            _countries = countries.Split(',', ' ');
-            _area = area;
-            _name = name;
-            _rank = rank;
+            Countries = countries.Split(',');
+            Area = area;
+            Name = name;
+            Rank = rank;
         }
     }
 }

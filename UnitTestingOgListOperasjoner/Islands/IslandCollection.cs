@@ -1,6 +1,6 @@
 ﻿namespace UnitTestingOgListOperasjoner.Islands
 {
-    internal class IslandCollection
+    public class IslandCollection
     {
         // hentet fra https://no.wikipedia.org/wiki/Liste_over_%C3%B8yer_etter_st%C3%B8rrelse
         private Island[] _islands;
@@ -8,6 +8,59 @@
         public IslandCollection()
         {
             _islands = CreateIslands();
+        }
+
+        //public Island GetIslandWithLongestName()
+        //{
+        //    var theIsland = _islands[0];
+        //    foreach (var island in _islands)
+        //    {
+        //        if (island.Name.Length > theIsland.Name.Length)
+        //        {
+        //            theIsland = island;
+        //        }
+        //    }
+        //    return theIsland;
+        //}
+        public Island GetIslandWithLongestName()
+        {
+            return _islands.OrderByDescending(i => i.Name.Length).First();
+        }
+
+
+        //public List<Island> GetIslandsAboveMinimum(int minimumArea)
+        //{
+        //    return _islands.Where(i => i.Area > minimumArea).ToList();
+        //}
+
+        public List<Island> GetIslandsAboveMinimum(int minimumArea)
+        {
+            var islands = new List<Island>();
+            foreach (var island in _islands)
+            {
+                if (island.Area > minimumArea)
+                {
+                    islands.Add(island);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return islands;
+        }
+
+        public List<Island> GetIslandsByCountryCount(int minimumCountryCount)
+        {
+            var islands = new List<Island>();
+            foreach (var island in _islands)
+            {
+                if (island.Countries.Length >= minimumCountryCount )
+                {
+                    islands.Add(island);
+                }
+            }
+            return islands;
         }
 
         private static Island[] CreateIslands()
@@ -116,5 +169,6 @@
                 new Island(100, "Sipleøya", 6390, "Antarktis"),
             };
         }
+
     }
 }
