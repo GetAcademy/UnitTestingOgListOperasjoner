@@ -57,7 +57,7 @@ namespace UnitTestingOgListOperasjoner.Islands
             var islands = new List<Island>();
             foreach (var island in _islands)
             {
-                if (island.Countries.Length >= minimumCountryCount )
+                if (island.Countries.Length >= minimumCountryCount)
                 {
                     islands.Add(island);
                 }
@@ -271,11 +271,65 @@ namespace UnitTestingOgListOperasjoner.Islands
         //}
         public List<string> Get10LastAlphabetically()
         {
-            return _islands.OrderByDescending(i=>i.Name)
-                .Select(i=>i.Name)
+            return _islands.OrderByDescending(i => i.Name)
+                .Select(i => i.Name)
                 //.Skip(10)
                 .Take(10)
                 .ToList();
+        }
+
+        public List<Island> GetDoubled()
+        {
+            return _islands.Select(i =>
+                        new Island(
+                            i.Rank,
+                            i.Name,
+                            i.Area * 2,
+                            string.Join(",", i.Countries)
+                            ))
+                .ToList();
+        }
+
+        //public List<Island> GetDoubled()
+        //{
+        //    return _islands.Select(i => i with { Area = i.Area * 2 })
+        //        .ToList();
+        //}
+        //public void ShowPerCountry()
+        //{
+        //    var countries = new List<Country>();
+        //    foreach (var island in _islands)
+        //    {
+        //        foreach (var countryName in island.Countries)
+        //        {
+        //            var country = countries.FirstOrDefault(c => c.Name == countryName);
+        //            if (country == null)
+        //            {
+        //                country = new Country(countryName);
+        //                countries.Add(country);
+        //            }
+        //            country.AddIsland(island);
+        //        }
+        //    }
+
+        //    foreach (var country in countries)
+        //    {
+        //        country.Show();
+        //    }
+        //}
+
+        public void ShowPerCountry()
+        {
+            var countryGroups= _islands.GroupBy(i => i.Countries[0]);
+
+            foreach (var countryGroup in countryGroups)
+            {
+                Console.WriteLine(countryGroup.Key);
+                foreach (var island in countryGroup)
+                {
+                    Console.WriteLine("  " + island.Name);
+                }
+            }
         }
     }
 }

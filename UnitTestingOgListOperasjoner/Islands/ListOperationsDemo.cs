@@ -5,8 +5,6 @@ namespace UnitTestingOgListOperasjoner.Islands
     internal class ListOperationsDemo
     {
         /*
-         * Pause til 13:32
-         *
          * Noen vanlige operasjoner på lister av objekter:
          *  - Finne et objekt ut fra bestemt feltverdi 
          *  - Finne alle objekter ut fra bestemt feltverdi (filter Where) - eller telle - eller alle/ingen/noen
@@ -42,8 +40,14 @@ namespace UnitTestingOgListOperasjoner.Islands
 
             // Sortere
             // Lage en ny liste med verdiene til et eller flere felt - eller en konstruksjon avledet av dette (map Select)
-            var islands = islandCollection.Get10LastAlphabetically();
-            Console.WriteLine(string.Join(", ", islands));
+            //var islands = islandCollection.Get10LastAlphabetically();
+            //Console.WriteLine(string.Join(", ", islands));
+
+            // Oppdatere feltverdien
+            //var doubleIslands = islandCollection.GetDoubled();
+
+            // Gruppere
+            islandCollection.ShowPerCountry();
         }
     }
 }
