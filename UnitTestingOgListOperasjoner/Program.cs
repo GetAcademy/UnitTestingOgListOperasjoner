@@ -1,4 +1,15 @@
-﻿/*
+﻿
+/*
+ * Torsdag: Listeoperasjoner
+ */
+
+using UnitTestingOgListOperasjoner.Islands;
+
+ListOperationsDemo.Run();
+
+/*
+ * Tirsdag:
+ *
  * 1: Kort eksempel unit teste klasse
  * 2: Tre ulike perspektiver på unit testing
  *    - Kvalitet, utviklingshastighet, grensetilfeller
@@ -10,4 +21,3 @@
  *
  */
 
-Console.WriteLine("Hei");
