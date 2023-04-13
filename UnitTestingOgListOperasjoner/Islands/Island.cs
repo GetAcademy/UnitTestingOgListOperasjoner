@@ -14,5 +14,10 @@
             Name = name;
             Rank = rank;
         }
+
+        public void Show()
+        {
+            Console.WriteLine($"{Rank} {Name} {string.Join(", ", Countries)}");
+        }
     }
 }

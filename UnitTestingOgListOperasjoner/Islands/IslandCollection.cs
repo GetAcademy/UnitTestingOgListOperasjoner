@@ -1,4 +1,6 @@
-﻿namespace UnitTestingOgListOperasjoner.Islands
+﻿using System.Collections;
+
+namespace UnitTestingOgListOperasjoner.Islands
 {
     public class IslandCollection
     {
@@ -170,5 +172,66 @@
             };
         }
 
+        public Island GetByRank(int rank)
+        {
+            foreach (var island in _islands)
+            {
+                if (island.Rank == rank) return island;
+            }
+            return null;
+        }
+
+        /*
+        public Island GetByRank(int rank)
+        {
+            return _islands.FirstOrDefault(island => island.Rank == rank);
+            //return _islands.First(island => island.Rank == rank);
+            //return _islands.Single(island => island.Rank == rank);
+            //return _islands.SingleOrDefault(island => island.Rank == rank);
+            //return _islands.Where(island => island.Rank == rank).FirstOrDefault();
+        }
+        */
+        public List<Island> GetIslandsByCountry(string countryName)
+        {
+            var islands = new List<Island>();
+            foreach (var island in _islands)
+            {
+                if (island.Countries.Contains(countryName))
+                {
+                    islands.Add(island);
+                }
+            }
+            return islands;
+        }
+
+        //public List<Island> GetIslandsByCountry(string countryName)
+        //{
+        //    return _islands
+        //        .Where(i => i.Countries.Contains(countryName))
+        //        .ToList();
+        //}
+
+        public int GetIslandCountByCountry(string countryName)
+        {
+            return _islands.Count(i => i.Countries.Contains(countryName));
+        }
+
+        public bool HasCountryIslands(string countryName)
+        {
+            return _islands.Any(i => i.Countries.Contains(countryName));
+            //return _islands.All(i => i.Countries.Contains(countryName));
+        }
+
+        //public bool HasCountryIslands(string countryName)
+        //{
+        //    foreach (var island in _islands)
+        //    {
+        //        if (island.Countries.Contains(countryName))
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
     }
 }
