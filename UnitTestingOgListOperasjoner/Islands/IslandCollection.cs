@@ -233,5 +233,49 @@ namespace UnitTestingOgListOperasjoner.Islands
         //    }
         //    return false;
         //}
+
+        public void ShowStats()
+        {
+            var sum = 0;
+            var min = _islands[0].Area;
+            var max = _islands[0].Area;
+            foreach (var island in _islands)
+            {
+                sum += island.Area;
+                if (island.Area > max)
+                {
+                    max = island.Area;
+                }
+                if (island.Area < min)
+                {
+                    min = island.Area;
+                }
+            }
+
+            var mean = sum / _islands.Length;
+
+            Console.WriteLine($"Sum: {sum} Min: {min} Max: {max} Snitt: {mean}");
+        }
+
+        //public void ShowStats()
+        //{
+        //    //var numbers = new [] {1, 2, 3};
+        //    //numbers.Sum();
+
+        //    var sum = _islands.Sum(i=>i.Area);
+        //    var min = _islands.Min(i=>i.Area);
+        //    var max = _islands.Max(i=>i.Area);
+        //    var mean = _islands.Average(i=>i.Area);
+
+        //    Console.WriteLine($"Sum: {sum} Min: {min} Max: {max} Snitt: {mean}");
+        //}
+        public List<string> Get10LastAlphabetically()
+        {
+            return _islands.OrderByDescending(i=>i.Name)
+                .Select(i=>i.Name)
+                //.Skip(10)
+                .Take(10)
+                .ToList();
+        }
     }
 }
